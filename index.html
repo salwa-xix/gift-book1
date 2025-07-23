@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>إهداء نادي الإبداع الهندسي</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Cairo&display=swap');
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fdfcf9;
+      font-family: 'Amiri', serif;
+    }
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .booklet {
+      width: 100%;
+      max-width: 800px;
+      height: 90vh;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      position: relative;
+    }
+    .page {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      opacity: 0;
+      transition: all 0.6s ease;
+      padding: 30px 20px 80px;
+      overflow-y: auto;
+      background: white;
+
+  border-right: 12px solid;
+  border-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #319a84 50%,
+    #3587b9 100%
+  ) 1;
+  animation: borderShift 6s infinite linear;
+
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .page.active {
+      left: 0;
+      opacity: 1;
+    }
+    .page.cover {
+      background: linear-gradient(135deg, #319a84, #3587b9);
+      color: white;
+      border: none;
+    }
+    .logo {
+      width: 50px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .header img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin: 0 auto 10px;
+    }
+    .header h1 {
+      font-size: 26px;
+      margin: 10px 0 5px;
+    }
+    .header p {
+      font-size: 16px;
+      color: #eeeeee;
+    }
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #319a84;
+    }
+    .paragraph {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 20px;
+    }
+    .memory {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+    .polaroid {
+      background: #fff;
+      border: 4px solid #ddd;
+      padding: 5px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      width: 140px;
+      text-align: center;
+    }
+    .polaroid img {
+  width: 140px;
+      border-radius: 6px;
+    }
+    .polaroid p {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .quote {
+      font-style: italic;
+      font-size: 10px;
+      margin: 20px 0;
+      color: #333;
+    }
+    .thanks {
+      font-size: 22px;
+      font-weight: bold;
+      color: #fafafb;
+      margin-top: 30px;
+    }
+    .footer {
+      font-size: 14px;
+      color: #999;
+      margin-top: 10px;
+    }
+    .page-number {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+    }
+    .slogan {
+      font-size: 17px;
+      color: #f2eeee;
+      display: block;
+    }
+    .pageNum{
+        text-align: center; 
+    }
+    .nav-buttons {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .nav-buttons button {
+      background: #319a84;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      border-radius: 150px;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      .polaroid {
+        width: 100%;
+      }
+      .page {
+        padding: 20px 15px 80px;
+        
+      }
+       .polaroid img {
+  width: 160px;
+      border-radius: 6px;
+    }
+    }
+.certificate-btn-inline {
+  margin-top: 12px;
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #ffffff, #f4f9f9);
+  color: #2b7a78;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 26px;
+  border: 1px solid #dbeeee;
+  border-radius: 40px;
+  box-shadow: 0 4px 12px rgba(43, 122, 120, 0.12);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: 'Cairo', sans-serif;
+  white-space: nowrap;
+}
+.certificate-btn-inline:hover {
+  background: linear-gradient(145deg, #f9ffff, #e6f4f2);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(43, 122, 120, 0.2);
+}
+
+
+
+@media (max-width: 600px) {
+  .certificate-btn-inline {
+    font-size: 15px;
+    padding: 10px 20px;
+    width: auto; /* مهم */
+    max-width: 90%;
+    white-space: nowrap;
+    margin: 10px auto 20px;
+  }
+}
+
+
+    .slogan-text {
+  position: absolute;
+  bottom: 10px;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 1;
+  text-align: center;
+}
+
+    .slogan {
+  font-size: 17px;
+  color: #555;
+  display: block;
+}
+
+
+  </style>
+
+</head>
+<body>
+<div class="container">
+  <div class="booklet" id="booklet">
+<div class="page cover active" style="background: linear-gradient(135deg, #319a84, #3587b9); color: white; position: relative; overflow: hidden;">
+
+  <!-- شبكة مربعات شفافة -->
+  <svg style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0.06; z-index:0;" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <defs>
+      <pattern id="smallGrid" width="10" height="10" patternUnits="userSpaceOnUse">
+        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#smallGrid)" />
+  </svg>
+
+  <!-- دوائر شفافة تقنية -->
+  <svg style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;" viewBox="0 0 800 600" preserveAspectRatio="none">
+    <circle cx="150" cy="100" r="60" fill="rgba(255,255,255,0.05)" />
+    <circle cx="650" cy="200" r="40" fill="rgba(255,255,255,0.04)" />
+    <circle cx="300" cy="500" r="25" fill="rgba(255,255,255,0.03)" />
+  </svg>
+
+  <!-- شعاع ضوئي متحرك -->
+  <div style="position:absolute; top:0; left:-50%; width:200%; height:100%; background: linear-gradient(120deg, rgba(255,255,255,0.05) 0%, transparent 50%, rgba(255,255,255,0.05) 100%); animation: shine 6s infinite linear; z-index:0;"></div>
+
+  <style>
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(0); }
+      100% { transform: translateX(100%); }
+    }
+  </style>
+
+
+
+<!-- محتوى الغلاف -->
+<div class="header" style="position: relative; z-index: 1;">
+  <img src="ba.jpg" alt="المقدم">
+  <h1 style="font-size: 30px;">ورشة النجاح المالي</h1>
+  <p style="font-size: 18px;">تقديم الخبير والمستشار <strong>د. سالم باشميل</strong></p>
+  <p class="paragraph" style="max-width: 520px; margin: 20px auto; color: #f0f0f0;">
+    نُهدي هذا الكتيّب للدكتور سالم باشميل، تقديرًا لمساهمته القيّمة في ورشة النجاح المالي.  
+    <br><br>
+     كما يمكنكم تحميل <strong>شهادة الشكر والتقدير</strong> من خلال الزر المرفق أدناه.
+  </p>
+
+<a href="د.سالم-باشميل.pdf" class="certificate-btn-inline" onclick="downloadPDF()">
+  <i class="fas fa-award" style="margin-left: 8px;"></i>  شهادة شكر وتقدير
+</a>
+
+
+
+    <p class="paragraph" style="max-width: 520px; margin: 20px auto; color: #f0f0f0;">
+حيث تبصر الأفكار واقعها✧  </p>
+</div> 
+
+
+
+
+
+
+
+</div>
+
+
+<!-- صفحة الشكر مع أمواج -->
+<div class="page" style="background-image: url('https://www.svgbackgrounds.com/wp-content/uploads/2021/05/waves-blue.svg'); background-size: cover;">
+  <img class="logo" src="Logo.png" alt="شعار">
+  <h2 class="section-title" style="font-family: 'Cairo', sans-serif;">شكر وتقدير</h2>
+<p class="paragraph" style="font-size: 18px;">
+  يتقدّم نادي الإبداع الهندسي بخالص الشكر والتقدير للدكتور <strong>سالم باشميل</strong>، على تقديمه ورشة "النجاح المالي" ومساهمته القيّمة في إثراء محتواها.
+</p>
+<p class="paragraph" style="color: #555; font-style: italic;">
+  نثمّن هذا العطاء، ونتطلع إلى المزيد من التعاون المثمر مستقبلًا.
+</p>
+
+<div class="page-number slogan-text">
+  <span class="slogan"></span>
+</div>
+
+  <div class="page-number">
+  </div>
+</div>
+
+   
+    <div class="page">
+      <img class="logo" src="Logo.png" alt="شعار">
+      <h2 class="section-title">صور من الورشة</h2>
+      <div class="memory">
+        <div class="polaroid">
+          <img src="صور الملتقى المهاري المالي  (1).jpg">
+          <p>لحظة لا تُنسى</p>
+        </div>
+        <div class="polaroid">
+          <img src="صور الملتقى المهاري المالي .jpg">
+          <p>تفاعل الحضور</p>
+        </div>
+      </div>
+    </div>
+    <div class="page">
+  <img class="logo" src="Logo.png" alt="شعار">
+  <h2 class="section-title">آراء الحضور</h2>
+
+  <div class="quote">"بصراحة الملتقى كان جدًا جميل وخفيف استمتعت واستفدت كثير 
+الطرح كان واضح وسهل والمقدمين ما شاء الله أسلوبهم مريح ويوصل المعلومة بطريقة بسيطة 
+أكثر شيء شدني هو طريقة الشرح والتفاعل مع الحضور حسيت ان الوقت مر مرة بسرعة 
+الله يعطيكم الف عافية على المجهود، ومستعدة احضر اي لقاء ثاني بنفس الروح الجميلة هذي 🤍"</div>
+
+  <div class="quote">"المحتوى ثري ومفيد جدًا، خاصة أنه قُدِم بأسلوب مبسّط وسلس.
+المقدمين ما شاء الله تميزوا بالحضور والتفاعل، وكل واحد فيهم أضاف قيمة واضحة من خبرته ومعرفته 👏🏻
+شكرًا لكل من ساهم في إعداد وتنظيم هاللقاء الرائع، جهودكم واضحة وتستحق كل التقدير 🤍"</div>
+
+  <div class="quote">"تبارك الله اختيار المحاضرين تشكروا عليه شخصيًا أنا والاستثمار خطان لا يلتقيان لكن أسلوبهم ممتع جدًا الله يعطيكم العافية."</div>
+
+
+  <div class="page-number">
+  </div>
+</div>
+
+ <div class="page">
+  <img class="logo" src="Logo.png" alt="شعار">
+  <h2 class="section-title">آراء الحضور</h2>
+
+  <div class="quote">"    شكرا شكرا شكرا للجميع 
+المقدمين قدمتم كلام من ذهب ، نصائح وتحفيز يثلج الصدر، محظوظين كل الحظ اننا حزنا على وقت معكم وكل ثانيه كانت كفيله انها تمتعنا وتعلمنا ولو القليل 
+
+انا مؤمن ان نسبة ٦٠٪؜ من نجاح اي دوره او ملتقى بالفعاليه وكان الحضور رائعع ومتفاعل الله يعطيكم العافيه 
+
+ممتن للكل وبأذن الله مايكون اخر تعاون ونلقاكم في مناسبات اجمل🙏🏼🩶"</div>
+
+  <div class="quote">"أتقدم بجزيل الشكر والامتنان للدكتور سالم باشميل والدكتور عبدالله باوزير على حضورهم المميز والمثرِي.
+استفدت من كل لحظة، من المعلومات القيمة، والطريقة السلسة في الطرح، والنقاشات اللي فتحت لي آفاق جديدة كنت غافلة عنها.
+طريقة شرحكم كانت مبسطة وواضحة، وحضوركم فعلاً أضاف قيمة كبيرة للمكان.
+استمتعت كثير، وكان الوقت يمشي وأنا ما حسيت فيه، من كثر ما كان المحتوى شيّق ومفيد.
+جزاكم الله كل خير وكتب أجركم."</div>
+
+
+
+  <div class="page-number">
+  </div>
+</div>
+
+
+
+
+    
+  <div class="page">
+  <img class="logo" src="Logo.png" alt="شعار">
+ <p class="paragraph">
+  نحن، أعضاء <strong>النادي الإبداع الهندسي</strong>، نتقدم بخالص الشكر والتقدير للدكتور <strong>سالم باشميل</strong> على تقديمه ورشة عمل قيّمة، أثرى من خلالها معرفتنا في مجال النجاح المالي.
+</p>
+
+<p class="paragraph" style="font-style: italic; color: #555;">
+  نثمّن مشاركتكم الفاعلة، ومساهمتكم في نقل الخبرة والمعرفة، والتي كان لها بالغ الأثر في إثراء الورشة.
+</p>
+
+<p class="paragraph" style="margin-top: 10px;">
+  مع خالص التقدير والامتنان،<br>
+  <strong>أعضاء النادي الإبداع الهندسي</strong>
+</p>
+  
+  <div class="page-number">
+  </div>
+</div>
+
+   <div class="page" style="background: linear-gradient(135deg, #319a84, #5db4c7); color: white;">
+  
+  <div class="thanks" style="font-size: 24px; margin-bottom: 20px;">
+    مع أطيب التحيات <br>الشؤون التقنية – النادي الإبداع الهندسي
+  </div>
+  <p class="footer" style="color: #fff; font-size: 16px;">
+    
+   
+  </p>
+  <div class="page-number">
+  </div>
+</div>
+
+ <div class="nav-buttons">
+  <button onclick="prevPage()" title="السابق">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+  <button onclick="nextPage()" title="التالي">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+</div>
+
+
+<script>
+  let currentPage = 0;
+  const pages = document.querySelectorAll('.page');
+
+  function showPage(index) {
+    pages.forEach((p, i) => {
+      p.classList.remove('active');
+      if (i === index) {
+        p.classList.add('active');
+      }
+    });
+  }
+
+  function nextPage() {
+    if (currentPage < pages.length - 1) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  }
+
+  function prevPage() {
+    if (currentPage > 0) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  }
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</body>
+</html>
